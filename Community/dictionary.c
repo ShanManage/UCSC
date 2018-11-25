@@ -111,11 +111,11 @@ int main(){
         switch(n){
             case '1':
                 ;
-                char* description = (char *) calloc(100, sizeof(char));
+                char* description = (char *) calloc(100 , sizeof(char));
                 printf("Name of word => ");
+                scanf("%c", &temp);
                 gets(wordName);
                 printf("Disciption of word => ");
-                scanf("%c", &temp);
                 gets(description);
                 addWord(wordName, description);   
                 printf("=========================\n");
@@ -141,14 +141,17 @@ int main(){
 
             case '4':
                 resetDic();
+                scanf("%c", &temp);
                 break;
                 
             case '5':
                 run = 1;
+                scanf("%c", &temp);
                 break;
 
             default:
                 printf("Error.!\n");
+                scanf("%c", &temp);
                 return 0;
         }
     }
