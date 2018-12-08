@@ -34,6 +34,10 @@ class student
     int getmark(){
         return mark;
     }
+
+ bool operator<(const student & o) const{
+     return stdID < o.stdID;
+ }
 };
 
 class subject
@@ -47,6 +51,10 @@ class subject
         subject()
         {
             std = new student[100];
+        }
+
+        void sortStudents(){
+            sort(std, std+markCount);
         }
 
         void setsubcode(string code)
@@ -279,6 +287,7 @@ class storeSubject
                     sub[m].getStudents()[i].setmark(mark);
                     sub[m].getStudents()[i].setGrade(getgrade(mark));
                 }
+                sub[m].sortStudents();
                 m++;
             }
             setCount(m);
@@ -308,7 +317,7 @@ int main()
     
     bool isContinue = true;
     char any;
-    char choice;
+    char choice[100];
     string code;
     int ID;
     
@@ -316,11 +325,12 @@ int main()
     {
         sub.menu();
         cin >> choice;
+        int ch = atoi(choice);
         cout << "_____________________________\n" << endl;
 
-        switch(choice)
+        switch(ch)
         {
-            case '1':
+            case 1:
                 ;
                 cout << "Enter Subject code : ";
                 cin >> code;
@@ -331,7 +341,7 @@ int main()
                 cin >> any;
                 break;
 
-            case '2':
+            case 2:
                 ;
                 cout << "Enter Student ID : ";
                 cin >> ID;
@@ -342,7 +352,7 @@ int main()
                 cin >> any;
                 break;
 
-            case '3':
+            case 3:
                 ;
                 cout << "Enter Subject code : ";
                 cin >> code;
@@ -353,7 +363,7 @@ int main()
                 cin >> any;
                 break;
 
-            case '4':
+            case 4:
                 ;
                 sub.saveSummary();
 
@@ -361,7 +371,7 @@ int main()
                 cin >> any;
                 break;
 
-            case '5':
+            case 5:
                 ;
                 cout << "exite programme succesfuly.!\n ";
                 isContinue = false;
